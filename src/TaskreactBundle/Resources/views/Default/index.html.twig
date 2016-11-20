@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+Hello World!
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+
+<!--<script src="https://fb.me/react-0.14.7.js"></script>
+<script src="https://fb.me/react-dom-0.14.7.js"></script>
+ <script src="http://fb.me/react-0.10.0.min.js"></script>
+https://fb.me/react-devtools-->
+
+<script type="javascript">
+
+var TimerExample = React.createClass({
+
+    getInitialState: function(){
+
+        // Это выполняется перед функцией render. Возвращаемый объект 
+        // присваивается в this.state, чтобы мы могли использовать его позже.
+
+        return { elapsed: 0 };
+    },
+
+    componentDidMount: function(){
+
+        // componentDidMount вызывается react'ом, когда компонент 
+        // был отрисован на странице. Мы можем установить интервал здесь:
+
+        this.timer = setInterval(this.tick, 50);
+    },
+
+    componentWillUnmount: function(){
+
+        // Этот метод вызывается сразу после того, как компонент удален
+        // со страницы и уничтожен. Мы можем удалить интервал здесь:
+
+        clearInterval(this.timer);
+    },
+
+    tick: function(){
+
+        // Эта функция вызывается каждые 50мс. Она обновляет 
+        // счетчик затраченного времени. Вызов setState заставляет компонент перерисовываться
+
+        this.setState({elapsed: new Date() - this.props.start});
+    },
+
+    render: function() {
+        
+        var elapsed = Math.round(this.state.elapsed / 100);
+
+        // Это даст нам число с одной цифрой после запятой dot (xx.x):
+        var seconds = (elapsed / 10).toFixed(1);    
+
+        // Хоть мы и возвращаем целый <p> элемент, react разумно обновит
+        // только измененные части, содержащие переменную seconds.
+
+        return '<p>This example was started <b>{seconds} seconds</b> ago.</p>';
+    }
+});
+
+ ReactDOM.render(
+     <TimerExample start={Date.now()} />,
+   document.getElementById('container')
+ );
+
+// ReactDOMServer.renderToStaticMarkup(
+//     <TimerExample start={Date.now()} />,
+ // //// document.getElementById('container')
+ //);
+
+
+//React.renderComponent(
+ //   <TimerExample start={Date.now()} />,
+ //   document.getElementById('timerDiv')
+//);
+</script>
+
+
+{% endblock %}
+
+
+<div id="timerDiv">
+</div>
+
+<section class="todoapp">
+<div data-reactid=".0">
+<header class="header" data-reactid=".0.0">
+<h1 data-reactid=".0.0.0">todos</h1>
+<input class="new-todo" placeholder="What needs to be done?" value="" data-reactid=".0.0.1">
+</header>
+<section class="main" data-reactid=".0.1">
+<input class="toggle-all" type="checkbox" data-reactid=".0.1.0">
+<ul class="todo-list" data-reactid=".0.1.1">
+<li class="" data-reactid=".0.1.1.$052da573-7b73-40a3-b0be-b723e79009e5">
+    <div class="view" data-reactid=".0.1.1.$052da573-7b73-40a3-b0be-b723e79009e5.0">
+    <input class="toggle" type="checkbox" data-reactid=".0.1.1.$052da573-7b73-40a3-b0be-b723e79009e5.0.0">
+    <label data-reactid=".0.1.1.$052da573-7b73-40a3-b0be-b723e79009e5.0.1">something</label>
+    <button class="destroy" data-reactid=".0.1.1.$052da573-7b73-40a3-b0be-b723e79009e5.0.2"></button>
+    </div>
+    <input class="edit" value="something" data-reactid=".0.1.1.$052da573-7b73-40a3-b0be-b723e79009e5.1">
+</li>
+<li class="completed" data-reactid=".0.1.1.$5916150c-d158-4756-b578-64645e1c0b3e">
+    <div class="view" data-reactid=".0.1.1.$5916150c-d158-4756-b578-64645e1c0b3e.0">
+    <input class="toggle" type="checkbox" checked="" data-reactid=".0.1.1.$5916150c-d158-4756-b578-64645e1c0b3e.0.0">
+    <label data-reactid=".0.1.1.$5916150c-d158-4756-b578-64645e1c0b3e.0.1">task</label>
+    <button class="destroy" data-reactid=".0.1.1.$5916150c-d158-4756-b578-64645e1c0b3e.0.2"></button>
+    </div>
+    <input class="edit" value="task" data-reactid=".0.1.1.$5916150c-d158-4756-b578-64645e1c0b3e.1">
+</li>
+<li class="completed" data-reactid=".0.1.1.$9d8a6b46-17e8-4852-8664-2da0c5bf5ca8">
+    <div class="view" data-reactid=".0.1.1.$9d8a6b46-17e8-4852-8664-2da0c5bf5ca8.0">
+    <input class="toggle" type="checkbox" checked="" data-reactid=".0.1.1.$9d8a6b46-17e8-4852-8664-2da0c5bf5ca8.0.0">
+    <label data-reactid=".0.1.1.$9d8a6b46-17e8-4852-8664-2da0c5bf5ca8.0.1">task with js oop</label>
+    <button class="destroy" data-reactid=".0.1.1.$9d8a6b46-17e8-4852-8664-2da0c5bf5ca8.0.2"></button>
+    </div>
+    <input class="edit" value="task with js oop" data-reactid=".0.1.1.$9d8a6b46-17e8-4852-8664-2da0c5bf5ca8.1">
+</li>
+<li class="" data-reactid=".0.1.1.$8e2dbc02-6310-4017-97f9-feee87cfe86f">
+<div class="view" data-reactid=".0.1.1.$8e2dbc02-6310-4017-97f9-feee87cfe86f.0">
+<input class="toggle" type="checkbox" data-reactid=".0.1.1.$8e2dbc02-6310-4017-97f9-feee87cfe86f.0.0">
+<label data-reactid=".0.1.1.$8e2dbc02-6310-4017-97f9-feee87cfe86f.0.1">тест</label>
+<button class="destroy" data-reactid=".0.1.1.$8e2dbc02-6310-4017-97f9-feee87cfe86f.0.2"></button>
+</div>
+<input class="edit" value="тест" data-reactid=".0.1.1.$8e2dbc02-6310-4017-97f9-feee87cfe86f.1">
+</li>
+</ul>
+</section>
+<footer class="footer" data-reactid=".0.2">
+<span class="todo-count" data-reactid=".0.2.0">
+<strong data-reactid=".0.2.0.0">2</strong>
+<span data-reactid=".0.2.0.1"> </span>
+<span data-reactid=".0.2.0.2">items</span>
+<span data-reactid=".0.2.0.3"> left</span>
+</span>
+<ul class="filters" data-reactid=".0.2.1">
+<li data-reactid=".0.2.1.0">
+<a href="#/" class="selected" data-reactid=".0.2.1.0.0">All</a>
+</li>
+<span data-reactid=".0.2.1.1"> </span>
+<li data-reactid=".0.2.1.2">
+<a href="#/active" class="" data-reactid=".0.2.1.2.0">Active</a>
+</li>
+<span data-reactid=".0.2.1.3"> </span>
+<li data-reactid=".0.2.1.4">
+<a href="#/completed" class="" data-reactid=".0.2.1.4.0">Completed</a>
+</li>
+</ul>
+<button class="clear-completed" data-reactid=".0.2.2">Clear completed</button>
+</footer>
+</div>
+</section>
+
+
+{% endblock %}

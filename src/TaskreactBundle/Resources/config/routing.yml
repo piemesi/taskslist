@@ -1,0 +1,27 @@
+taskreact_homepage:
+    path:     /
+    defaults: { _controller: TaskreactBundle:Task:index }
+    #defaults: { _controller: TaskreactBundle:Task:list, _condition: active }
+    #requirements:
+    #    _condition: active|archive
+
+taskreact_list:
+    path:     /list
+    #defaults: { _controller: TaskreactBundle:Task:index }
+    defaults: { _controller: TaskreactBundle:Task:list, _condition: active }
+    requirements:
+        _condition: active|archive
+
+#taskreact_homepage:
+#    path:     list/{_condition}
+#    defaults: { _controller: TaskreactBundle:Task:list, _condition: active }
+#    requirements:
+#        _condition: active|archive
+##        
+#taskreact_list:
+#    path:      */tasks
+#    defaults: { _controller: TaskreactBundle:Task:list, _condition: active }
+#    requirements:
+#        _condition: active|archive
+        
+        

@@ -1,0 +1,27 @@
+#taskreact:
+#    resource: "@TaskreactBundle/Resources/config/routing.yml"
+#    prefix:   /
+    
+taskreact:
+    resource: "@TaskreactBundle/Resources/config/routing.yml"
+    prefix:   /task    
+
+    
+#taskreact_list:
+#    resource: "@TaskreactBundle/Resources/config/routing.yml"
+#    prefix:   /task/list 
+    
+taskreact_list:
+    path:      /tasks/{condition}/
+    defaults: { _controller: TaskreactBundle:Task:list, condition: active }
+    #options: {name: genus_show_notes}
+    requirements:
+        condition: active|archive
+        
+        
+
+   
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
