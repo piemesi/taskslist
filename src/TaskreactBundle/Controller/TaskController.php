@@ -10,7 +10,9 @@ class TaskController extends Controller
     public function indexAction()
     {
         return $this->render('TaskreactBundle:Default:show.html.twig',
-                ["name"=>"Задачи"
+                [
+                    "name"=>"Задачи",
+                    "condition"=>"all"
                     ]);
     }
     

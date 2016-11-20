@@ -17,20 +17,25 @@
                 <dd>Octopuses can change the color of their body in just three-tenths of a second!</dd>
             </dl>
         </div>
-    </div>
+    </div>  
+           
     <div id="js-tasks-wrapper"></div>
 {% endblock %}
 
+
 {% block javascripts %}
     {{ parent() }}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+ 
+    
+    <script type="text/babel" src="{{ asset('js/tasks.react.js') }}"></script> 
 
-    <script type="text/babel" src="{{ asset('js/tasks.react.js') }}"></script>
+
     <script type="text/babel">
-        var tasksUrl = '{{ path('taskreact_list', {'genusName': name}) }}';
-tasksUrl="/tasks/active/";
+        var tasksUrl = '{{ path('taskreact_list', {'condition': condition}) }}';
+
         ReactDOM.render(
           <TaskSection url={tasksUrl} />,
           document.getElementById('js-tasks-wrapper')

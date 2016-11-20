@@ -1,0 +1,20 @@
+{
+  "name": "symfonyreact",
+  "description": "first try reactJS on symphony",
+  "main": "index.js",
+  "authors": [
+    "Alexey Gaynulin"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/piemesi/taskslist",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

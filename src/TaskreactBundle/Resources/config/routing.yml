@@ -6,22 +6,11 @@ taskreact_homepage:
     #    _condition: active|archive
 
 taskreact_list:
-    path:     /list
-    #defaults: { _controller: TaskreactBundle:Task:index }
-    defaults: { _controller: TaskreactBundle:Task:list, _condition: active }
+    path:      /{condition}/
+    defaults: { _controller: TaskreactBundle:Task:list, condition: all }
+    #options: {name: genus_show_notes}
     requirements:
-        _condition: active|archive
+        condition: active|archive|all
 
-#taskreact_homepage:
-#    path:     list/{_condition}
-#    defaults: { _controller: TaskreactBundle:Task:list, _condition: active }
-#    requirements:
-#        _condition: active|archive
-##        
-#taskreact_list:
-#    path:      */tasks
-#    defaults: { _controller: TaskreactBundle:Task:list, _condition: active }
-#    requirements:
-#        _condition: active|archive
-        
+ 
         
