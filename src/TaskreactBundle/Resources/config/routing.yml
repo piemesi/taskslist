@@ -12,5 +12,8 @@ taskreact_list:
     requirements:
         condition: active|archive|all
 
- 
+taskreact_create:
+    path:      /create/
+    defaults: { _controller: TaskreactBundle:Task:create }
+    
         
