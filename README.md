@@ -13,3 +13,5 @@ What's inside?
 
 Веб версия примера будет достпуна в ближайшие дни. 
 Настраивается на http://taskreactsymfony.gaynulin.ru/
+
+By Alexey Gaynulin
