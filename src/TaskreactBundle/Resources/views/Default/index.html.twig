@@ -1,81 +1,31 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ name }}{% endblock %}
+
 {% block body %}
-Hello World!
 
- 
+   <div id="js-tasks-wrapper"></div>
+
+{% endblock %}
 
 
-<div id="timerDiv">
-</div>
+{% block javascripts %}
 
-<section class="todoapp">
-<div data-reactid=".0">
-<header class="header" data-reactid=".0.0">
-<h1 data-reactid=".0.0.0">todos</h1>
-<input class="new-todo" placeholder="What needs to be done?" value="" data-reactid=".0.0.1">
-</header>
-<section class="main" data-reactid=".0.1">
-<input class="toggle-all" type="checkbox" data-reactid=".0.1.0">
-<ul class="todo-list" data-reactid=".0.1.1">
-<li class="" data-reactid=".0.1.1.$052da573-7b73-40a3-b0be-b723e79009e5">
-    <div class="view" data-reactid=".0.1.1.$052da573-7b73-40a3-b0be-b723e79009e5.0">
-    <input class="toggle" type="checkbox" data-reactid=".0.1.1.$052da573-7b73-40a3-b0be-b723e79009e5.0.0">
-    <label data-reactid=".0.1.1.$052da573-7b73-40a3-b0be-b723e79009e5.0.1">something</label>
-    <button class="destroy" data-reactid=".0.1.1.$052da573-7b73-40a3-b0be-b723e79009e5.0.2"></button>
-    </div>
-    <input class="edit" value="something" data-reactid=".0.1.1.$052da573-7b73-40a3-b0be-b723e79009e5.1">
-</li>
-<li class="completed" data-reactid=".0.1.1.$5916150c-d158-4756-b578-64645e1c0b3e">
-    <div class="view" data-reactid=".0.1.1.$5916150c-d158-4756-b578-64645e1c0b3e.0">
-    <input class="toggle" type="checkbox" checked="" data-reactid=".0.1.1.$5916150c-d158-4756-b578-64645e1c0b3e.0.0">
-    <label data-reactid=".0.1.1.$5916150c-d158-4756-b578-64645e1c0b3e.0.1">task</label>
-    <button class="destroy" data-reactid=".0.1.1.$5916150c-d158-4756-b578-64645e1c0b3e.0.2"></button>
-    </div>
-    <input class="edit" value="task" data-reactid=".0.1.1.$5916150c-d158-4756-b578-64645e1c0b3e.1">
-</li>
-<li class="completed" data-reactid=".0.1.1.$9d8a6b46-17e8-4852-8664-2da0c5bf5ca8">
-    <div class="view" data-reactid=".0.1.1.$9d8a6b46-17e8-4852-8664-2da0c5bf5ca8.0">
-    <input class="toggle" type="checkbox" checked="" data-reactid=".0.1.1.$9d8a6b46-17e8-4852-8664-2da0c5bf5ca8.0.0">
-    <label data-reactid=".0.1.1.$9d8a6b46-17e8-4852-8664-2da0c5bf5ca8.0.1">task with js oop</label>
-    <button class="destroy" data-reactid=".0.1.1.$9d8a6b46-17e8-4852-8664-2da0c5bf5ca8.0.2"></button>
-    </div>
-    <input class="edit" value="task with js oop" data-reactid=".0.1.1.$9d8a6b46-17e8-4852-8664-2da0c5bf5ca8.1">
-</li>
-<li class="" data-reactid=".0.1.1.$8e2dbc02-6310-4017-97f9-feee87cfe86f">
-<div class="view" data-reactid=".0.1.1.$8e2dbc02-6310-4017-97f9-feee87cfe86f.0">
-<input class="toggle" type="checkbox" data-reactid=".0.1.1.$8e2dbc02-6310-4017-97f9-feee87cfe86f.0.0">
-<label data-reactid=".0.1.1.$8e2dbc02-6310-4017-97f9-feee87cfe86f.0.1">тест</label>
-<button class="destroy" data-reactid=".0.1.1.$8e2dbc02-6310-4017-97f9-feee87cfe86f.0.2"></button>
-</div>
-<input class="edit" value="тест" data-reactid=".0.1.1.$8e2dbc02-6310-4017-97f9-feee87cfe86f.1">
-</li>
-</ul>
-</section>
-<footer class="footer" data-reactid=".0.2">
-<span class="todo-count" data-reactid=".0.2.0">
-<strong data-reactid=".0.2.0.0">2</strong>
-<span data-reactid=".0.2.0.1"> </span>
-<span data-reactid=".0.2.0.2">items</span>
-<span data-reactid=".0.2.0.3"> left</span>
-</span>
-<ul class="filters" data-reactid=".0.2.1">
-<li data-reactid=".0.2.1.0">
-<a href="#/" class="selected" data-reactid=".0.2.1.0.0">All</a>
-</li>
-<span data-reactid=".0.2.1.1"> </span>
-<li data-reactid=".0.2.1.2">
-<a href="#/active" class="" data-reactid=".0.2.1.2.0">Active</a>
-</li>
-<span data-reactid=".0.2.1.3"> </span>
-<li data-reactid=".0.2.1.4">
-<a href="#/completed" class="" data-reactid=".0.2.1.4.0">Completed</a>
-</li>
-</ul>
-<button class="clear-completed" data-reactid=".0.2.2">Clear completed</button>
-</footer>
-</div>
-</section>
+    {{ parent() }}
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <script type="text/babel" src="{{ asset('js/tasks.react.js') }}"></script> 
+
+    <script type="text/babel">
+        var tasksUrl = '{{ path('taskreact_homepage') }}';
+
+        ReactDOM.render(
+          <TaskSection url={tasksUrl} />,
+          document.getElementById('js-tasks-wrapper')
+        );
+    </script>
 
 {% endblock %}

@@ -4,7 +4,9 @@ var gulp = require('gulp'),
  concatJs = require('gulp-concat'),
  minifyJs = require('gulp-uglify');
 gulp.task('less', function() {
- return gulp.src(['web-src/less/*.less'])
+ return gulp.src(['web-src/less/*.less',
+     'web-src/css/*.css'
+ ])
  .pipe(less({compress: true}))
  .pipe(gulp.dest('web/css/'));
 });

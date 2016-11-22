@@ -16,4 +16,12 @@ taskreact_create:
     path:      /create/
     defaults: { _controller: TaskreactBundle:Task:create }
     
+taskreact_update:
+    path:      /update/
+    defaults: { _controller: TaskreactBundle:Task:update }    
+    
+taskreact_delete:
+    path:      /delete/
+    defaults: { _controller: TaskreactBundle:Task:delete }     
+    
         

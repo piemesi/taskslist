@@ -16,7 +16,7 @@ class TaskController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('TaskreactBundle:Default:show.html.twig', [
+        return $this->render('TaskreactBundle:Default:index.html.twig', [
                     "name" => "Задачи",
                     "condition" => "all"
         ]);
@@ -28,17 +28,18 @@ class TaskController extends Controller
      * @param type $_condition
      * @return JsonResponse
      */
-    public function listAction($_condition)
+    public function listAction($condition)
     {
+
         $em = $this->getDoctrine()
                 ->getManager();
         $repository = $em->getRepository('TaskreactBundle:Task');
 
         //Получаем список задач заданного состояния (активные/архивные/все)
-        if ($_condition == "all" || $_condition == "") {
-            $tasks = $repository->findAll();
+        if ($condition == "all" || $condition == "") {
+            $tasks = $repository->findBy([],["id"=>"DESC"]);
         } else {
-            $tasks = $repository->findBy(["currentcondition" => $_condition]);
+            $tasks = $repository->findBy(["currentcondition" => $condition]);
         }
 
         $tasksOutput = [];
@@ -49,7 +50,8 @@ class TaskController extends Controller
         }
 
         $data = [
-            'tasks' => $tasksOutput
+            'tasks' => $tasksOutput,
+            'totalCount' => count($tasksOutput)
         ];
 
         #return $this->render('TaskreactBundle:Default:index.html.twig');
@@ -68,7 +70,7 @@ class TaskController extends Controller
 
         $task = new Task();
         $task->setTitle($data['title']);
-        $task->setCurrentCondition("active");
+        $task->setCurrentcondition("active");
 
         $em = $this->getDoctrine()->getManager();
 
@@ -88,11 +90,12 @@ class TaskController extends Controller
      */
     public function updateAction($data)
     {
+
         $data = $_REQUEST;
-        $taskId=$data['task_id'];
+        $taskId=$data['id'];
 
         $em = $this->getDoctrine()->getManager();
-        $task = $em->getRepository('TaskreactBundle:Task')->find($taskId);
+        $task = $em->getRepository('TaskreactBundle:Task')->findOneById($taskId);
         
         if (!$task) {
             throw $this->createNotFoundException(
@@ -101,7 +104,7 @@ class TaskController extends Controller
         }
         
         $task->setTitle($data['title']);
-        $task->setCurrentCondition($data['condition']);
+        $task->setCurrentcondition($data['condition']);
 
         $em->flush();
 
@@ -118,22 +121,22 @@ class TaskController extends Controller
     public function deleteAction($data)
     {
         $data = $_REQUEST;
-        $taskId=$data['task_id'];
+        $taskId=$data['id'];
 
         $em = $this->getDoctrine()->getManager();
-        $task = $em->getRepository('TaskreactBundle:Task')->find($taskId);
+      
+        $task = $em->getRepository('TaskreactBundle:Task')->findOneById($taskId);
         
         if (!$task) {
             throw $this->createNotFoundException(
                 'No task found for id '.$taskId
             );
         }
-        
-        $task->setCurrentCondition("archive");
 
+        $em->remove($task);
         $em->flush();
 
-        return new Response($task->getId());
+        return new Response([]);
     }
     
 }
