@@ -12,10 +12,11 @@
 /var/sessions/*
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
-/vendor/
-/web/bundles/
-/node_modules/
-/bower_components/
-bower_components/
+#/vendor/
+#/web/bundles/
+#/node_modules/
+#/bower_components/
+#bower_components/
 nbproject/
+/nbproject/
 composer.lock
